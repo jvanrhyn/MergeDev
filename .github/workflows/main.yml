@@ -20,8 +20,11 @@ jobs:
 #        with:
 #          dotnet-version: '2.2.105' 
 
-      - name: Build solution and generate NuGet package
-        run: dotnet pack -c Release -v d
+      - name: Build solution
+        run: dotnet build -c Release -v d
+
+      - name: Generate NuGet package
+        run: dotnet pack -c Release --output out
 
       - name: Install NuGet client
         uses: warrenbuckley/Setup-Nuget@v1
@@ -30,4 +33,4 @@ jobs:
         run: nuget sources add -name "Github" -Source https://nuget.pkg.github.com/jvanrhyn/index.json -Username jvanrhyn -Password ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push generated package to GitHub registry
-        run: nuget push *.nupkg -Source "GitHub" -SkipDuplicate
+        run: nuget push out\*.nupkg -Source "GitHub" -SkipDuplicate
