@@ -23,7 +23,7 @@ jobs:
       - name: Build solution and generate NuGet package
         run: |  
           cd MergeDev
-          dotnet pack -c Release -o out  
+          dotnet pack -c Release -v diag
 
       - name: Install NuGet client
         uses: warrenbuckley/Setup-Nuget@v1
