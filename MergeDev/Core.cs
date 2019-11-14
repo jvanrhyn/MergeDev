@@ -6,7 +6,9 @@ namespace MergeDev
     {
         public static string Reverse(this string value)
         {
-            return value;
+            // As ar as code goes, this is pointless
+            // but we are testing github actions here.
+            return value.Reverse();
         }
     }
 }
