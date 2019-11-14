@@ -21,7 +21,7 @@ jobs:
 #          dotnet-version: '2.2.105' 
 
       - name: Build solution
-        run: dotnet build -c Release -v d
+        run: dotnet build -c Release
 
       - name: Generate NuGet package
         run: dotnet pack -c Release --output out
